@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nas.ssm.staff.dao.IStaffDao">
+	
+	<insert id="addStaff">
+		insert into staff(name, sex, gw, phone, zt)
+		values(#{name}, #{sex}, #{gw}, #{phone}, #{zt})
+	</insert>
+	
+	<select id="selectAllRows" resultType="long">
+		SELECT count(ID) FROM staff
+	</select>
+	
+	<select id="selectCurrentPageStaff" resultType="Staff">
+		SELECT id, name, sex, gw, phone, zt FROM staff
+		limit #{pageStartIndex}, #{pageSize}
+	</select>
+	
+	<delete id="delById">
+		delete from staff where id=#{xxx}
+	</delete>
+	
+</mapper>

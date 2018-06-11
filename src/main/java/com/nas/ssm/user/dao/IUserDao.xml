@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nas.ssm.user.dao.IUserDao">
+	
+	<insert id="addUser">
+		insert into user(name,number,gender,card,mileage,insurance,model,note) values(#{name},
+				#{number},#{gender},#{card},#{mileage},#{insurance},#{model},#{note})
+	</insert>
+	
+		<select id="selectCurrentPageColumn" resultType="User">
+			select id,name,number,gender,card,mileage,insurance,model,note from user limit #{pageStartIndex},#{pageSize}
+		</select>
+		
+
+		<select id="selectAllRows" resultType="long">
+			select count(id) from user
+	    </select>
+		
+		
+		<delete id="deleteById">
+			delete from user where id=#{id}
+		</delete>
+		
+</mapper>
